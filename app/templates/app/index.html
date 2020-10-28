@@ -12,7 +12,7 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="images/MK-Cover-Page-2.jpg" class="d-block w-100" height="400" loading="lazy" />
+            <img src="{% static 'images/MK-Cover-Page-2.jpg' %}" class="d-block w-100" height="400" loading="lazy" />
             <div class="container">
               <div class="carousel-caption carousel-text">
                 <h3>Our Vision</h3>
@@ -21,7 +21,7 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img src="images/MK-Cover-Page-1.jpg" class="d-block w-100" height="400" loading="lazy" />
+            <img src="{% static 'images/kes.png' %}" class="d-block w-100" height="400" loading="lazy" />
             <div class="container">
               <div class="carousel-caption carousel-text">
                 <h3>Our Mission</h3>
@@ -30,7 +30,7 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img src="images/MK-Cover-Page-2.jpg" class="d-block w-100" height="400" loading="lazy"/>
+            <img src="{% static 'images/MK-Cover-Page-2.jpg' %}" class="d-block w-100" height="400" loading="lazy"/>
             <div class="container">
               <div class="carousel-caption carousel-text">
                 <h3>The Team</h3>
@@ -51,7 +51,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <img src="images/finance.jpg" class="d-block w-100"/>
+            <img src=" {% static 'images/finance.jpg' %}" class="d-block w-100" height="300"/>
           </div>
           <div class="col-md-6 text-center">
             <h4 class="text-info">About Us</h4>
@@ -81,12 +81,12 @@
               </p>
             </div>
             <div class="col-md-6">
-              <img src="images/placeholder.png" height="300" width="350"/>
+              <img class="w-100" src="{% static 'images/stock.png' %}" height="300"/>
             </div>
-          </div>
+          </div><hr>
           <div class="row">
             <div class="col-md-6">
-              <img src="images/placeholder.png" height="300" width="350"/>
+              <img class="w-100" src="{% static 'images/graph.jpg' %}" height="300" />
             </div>
             <div class="col-md-6 text-center">
               <h5 class="text-info">Financial Planning and Budgeting </h5>
@@ -108,7 +108,7 @@
             <div class="row">
               <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
-                    <img src="images/placeholder.png" width="350"/>
+                    <img src="{% static 'images/kes.png' %}" height="200" width="350"/>
                   <div class="card-body">
                     <a href="blog.html"><p class="card-text">Make your way to financial freedom</p></a><br>
                     <div class="d-flex justify-content-between align-items-center">
@@ -122,9 +122,9 @@
               </div>
               <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
-                    <img src="images/placeholder.png" width="350"/>
+                    <img src="{% static 'images/big_dreams.png' %}" height="200" width="350"/>
                     <div class="card-body">
-                    <a href="blog.html"><p class="card-text">Make your way to financial freedom</p></a><br>
+                    <a href="blog.html"><p class="card-text">Promoting a saving culture</p></a><br>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
                         <a href="blog.html" role="button" class="btn btn-md btn-outline-secondary">View</a>
@@ -136,9 +136,9 @@
               </div>
               <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
-                    <img src="images/placeholder.png" width="350"/>
+                    <img src="{% static 'images/placeholder.png' %}" height="200" width="350"/>
                   <div class="card-body">
-                    <a href="blog.html"><p class="card-text">Make your way to financial freedom</p></a><br>
+                    <a href="blog.html"><p class="card-text">Promoting a saving culture</p></a><br>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
                         <a href="blog.html" role="button" class="btn btn-md btn-outline-secondary">View</a>
@@ -183,7 +183,7 @@
                                 clients on the best mix of investments to pursue.  </p>
                             </div>
                             <div class="col-md-5">
-                              <img src="images/karen.png" width="300"/>
+                              <img src="{% static 'images/karen.png' %}" width="300"/>
                             </div>
                           </div><br>
                 </div>    
