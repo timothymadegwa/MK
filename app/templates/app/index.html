@@ -104,71 +104,51 @@
             <div class="text-muted text-center">
                 <h4>POPULAR BLOGS</h4><br>
             </div>
-      
+          {% if blogs %}
             <div class="row">
+              {%for blog in blogs %}
               <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
-                    <img src="{% static 'images/kes.png' %}" height="200" width="350"/>
+                    <img src="{% static 'blog.image_1.url' %}" height="200" width="350"/>
                   <div class="card-body">
-                    <a href="blog.html"><p class="card-text">Make your way to financial freedom</p></a><br>
+                    <a href="blog.html"><p class="card-text">{{blog.title}}</p></a><br>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
                         <a href="blog.html" role="button" class="btn btn-md btn-outline-secondary">View</a>
                       </div>
-                      <small class="text-muted">9 mins</small>
+                      <small class="text-muted">{{blog.date | timesince}}</small>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <img src="{% static 'images/big_dreams.png' %}" height="200" width="350"/>
-                    <div class="card-body">
-                    <a href="blog.html"><p class="card-text">Promoting a saving culture</p></a><br>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <div class="btn-group">
-                        <a href="blog.html" role="button" class="btn btn-md btn-outline-secondary">View</a>
-                      </div>
-                      <small class="text-muted">9 mins</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <img src="{% static 'images/charity.png' %}" height="200" width="350"/>
-                  <div class="card-body">
-                    <a href="blog.html"><p class="card-text">Promoting a saving culture</p></a><br>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <div class="btn-group">
-                        <a href="blog.html" role="button" class="btn btn-md btn-outline-secondary">View</a>
-                      </div>
-                      <small class="text-muted">9 mins</small>
-                    </div>
-                  </div>
-                </div>
-              </div>   
+              {% endfor %} 
             </div>
+            {% else %}
+                <div class="text-center">
+                  <p>No Blogs to display</p>
+                </div>
+            {% endif %}
           </div>
         </div>
         <div class="container">
             <div class="text-muted text-center">
                 <br><h4>LATEST VIDEOS</h4><br>
             </div>
+            {% if videos %}
             <div class="row text-center">
+              {% for video in videos %}
               <div class="col-md-4">
-                <iframe src="https://www.youtube.com/embed/ScMzIvxBSi4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <br><a target="_blank" href="https://www.youtube.com/watch?v=ScMzIvxBSi4&t=6s&ab_channel=BenMarquezTX">Financial Freedom</a>
+                <iframe src="{{video.link}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <br><a target="_blank" href="{{video.link}}">{{video.title}}</a>
               </div>
-              <div class="col-md-4">
-                <iframe src="https://www.youtube.com/embed/ScMzIvxBSi4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <br><a target="_blank" href="https://www.youtube.com/watch?v=ScMzIvxBSi4&t=6s&ab_channel=BenMarquezTX">Financial Freedom</a>
-              </div>
-              <div class="col-md-4">
-                <iframe src="https://www.youtube.com/embed/ScMzIvxBSi4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <br><a target="_blank" href="https://www.youtube.com/watch?v=ScMzIvxBSi4&t=6s&ab_channel=BenMarquezTX">Financial Freedom</a>
-              </div>
-            </div><br><br>
+              {% endfor %}
+              
+            </div>
+            {% else %}
+                <div class="text-center">
+                  <p>No Videos to display</p>
+                </div>
+            {% endif %}<br><br>
         </div>
 
             <div class="bg-light text-center container-fluid"><br>

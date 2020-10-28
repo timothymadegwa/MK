@@ -1,11 +1,17 @@
 from django.shortcuts import render
-from .models import Contact
+from .models import Contact, BlogPost,Video
 from django.contrib import messages
 #from smtplib import SMTP, SMTP_SSL
 
 # Create your views here.
 
 def index(request):
+    blogs = BlogPost.objects.filter(is_published=True).order_by('-id')
+    videos = Video.objects.filter(is_published=True)
+    context = {
+        'blogs' : blogs,
+        'videos' : videos,
+    }
     return render(request, 'app/index.html')
 
 def about(request):
@@ -15,10 +21,18 @@ def services(request):
     return render(request, 'app/services.html')
 
 def blogs(request):
-    return render(request, 'app/blogs.html')
+    blogs = BlogPost.objects.filter(is_published=True).order_by('-id')
+    context = {
+        'blogs' : blogs,
+    }
+    return render(request, 'app/blogs.html', context)
 
 def videos(request):
-    return render(request, 'app/videos.html')
+    videos = Video.objects.filter(is_published=True)
+    context = {
+        'videos' : videos
+    }
+    return render(request, 'app/videos.html', context)
     
 def contact(request):
     if request.method == 'POST':
