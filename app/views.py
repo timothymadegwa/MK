@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Contact, BlogPost, Video
 from django.contrib import messages
-#from smtplib import SMTP, SMTP_SSL
+from smtplib import SMTP, SMTP_SSL
 
 # Create your views here.
 
@@ -60,15 +60,14 @@ def contact(request):
 
         contact = Contact(f_name=f_name, l_name=l_name, email=email, phone=phone, message=message)
         contact.save()
-        message = 'Thank you for contacting us '+f_name+', We will get back to you shortly'
-        messages.success(request, message)
-        '''
-        send_to = ['admin@mkc.co.ke']
-        send_to.append(email)
-        server = SMTP_SSL('mail.timdev.co.ke' , 465)
+        reply_message = 'Thank you for contacting us '+f_name+', We will get back to you shortly'
+        messages.success(request, reply_message)
+        send_to = ['kkamau@mkc.co.ke']
+        mail_message = 'There has been an inquiry on the website from '+f_name+' '+email+ ' '+phone+'\n\n '+message
+        server = SMTP_SSL('mail.mkc.co.ke' , 465)
         #server.starttls()
-        server.login('contact@timdev.co.ke', 'Kibukamusoke1')
-        server.sendmail('contact@timdev.co.ke', send_to, message)
-        server.quit()'''
+        server.login('admin@mkc.co.ke', 'Corona@2020')
+        server.sendmail('admin@mkc.co.ke', send_to, mail_message)
+        server.quit()
         return render(request, 'app/contact.html')
     return render(request, 'app/contact.html')
