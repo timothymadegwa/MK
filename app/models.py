@@ -19,7 +19,7 @@ class BlogPost(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100, unique=True)
     paragraph_1 = models.TextField(blank=False, null=False)
-    image_1 = models.ImageField(upload_to='photos/blogs', null=True, blank=True)
+    image_1 = models.ImageField(upload_to='photos/blogs', null=False, blank=False)
     caption_1 = models.CharField(max_length=100, blank=True, null=True)
     paragraph_2 = models.TextField(blank=True, null=True)
     image_2 = models.ImageField(upload_to='photos/blogs', null=True, blank=True)

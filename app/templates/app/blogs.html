@@ -8,21 +8,11 @@
                     <p><h3>BLOGS</h3></p>
                 </div>
                 {% if blogs %}
+                <div class="row">
                 {% for blog in blogs %}
-                <div class="row mb-2">
-                    <div class="col-md-12">
-                      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                        <div class="col p-4 d-flex flex-column position-static">
-                          <h4 class="mb-0 text-primary"><strong>{{blog.title}}</strong></h4>
-                          <div class="mb-1 text-muted">{{blog.date}}</div>
-                          <p class="card-text mb-auto">By</p>
-                          <p class="card-text mb-auto text-muted"> {{blog.author}} </p>
-                          <a href="blog.html" target="_blank" class="stretched-link">Continue reading</a>
-                        </div>
-                      </div>
-                    </div> 
-                </div>
+                {% include '_partials/_blog.html' %}
                 {% endfor %}
+                </div>
                 {% else %}
                 <div class="text-center">
                   <p>No Blogs to display</p>

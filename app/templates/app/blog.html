@@ -1,54 +1,97 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static%}
 {% block title %} | Blog {% endblock %}
 
-{% block content %}
-    <div class="container">
-        
-        <div class="col-md-12 float-left">
-            <div class="text-center  justify-content-center"><br></div>
-            <h2 class="text-info text-center"><strong><u>Make your way to financial freedom</u></strong></h2>
-            <p class='text-info'> Published on Oct. 19, 2020 by Karen Kamau</p>
-            
-            <div>
-                <br><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#x27;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-            </div>
-            
-            <div class="text-center  justify-content-center">
-                <img class="img-fluid" src="images/placeholder.png" loading="lazy"><br>
-                
-                <i>This is the first caption</i>
-                
-            </div>
-            
-            
-            <div>
-                <br><p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don&#x27;t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn&#x27;t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
-            </div>
-            
-            
-            <div class="text-center  justify-content-center">
-                <img class="img-fluid" src="images/placeholder.png" loading="lazy"><br>
-                
-                <i>This is the 2nd Caption</i>
-                
-            </div>
-            
-            
-            <div>
-                <br><p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of &quot;de Finibus Bonorum et Malorum&quot; (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, &quot;Lorem ipsum dolor sit amet..&quot;, comes from a line in section 1.10.32.</p>
-            </div>
-            
-            
 
-            <div>
+{% block content %}
+
+<div class="container">
+    {% if blog %}
+            <div class="col-md-12 float-left">
+                <div class="text-center  justify-content-center"><br></div>
+                <h2 class="text-info text-center"><strong><u>{{blog.title}}</u></strong></h2>
+                <p class='text-info'> Published on {{ blog.date}} by {{blog.author.name}}</p>
+                
+                <div>
+                    <br><p>{{ blog.paragraph_1 | safe}}</p>
+                </div>
+                {% if blog.image_1%}
+                  <div class="text-center  justify-content-center">
+                    <img src="{{blog.image_1.url}}" loading="lazy" height="400"><br>
+                    {% if blog.caption_1 %}
+                      <i>{{blog.caption_1}}</i>
+                    {% endif %}
+                  </div>
+                {% endif %}
+                {% if blog.paragraph_2 %}
+                  <div>
+                    <br><p>{{ blog.paragraph_2 | safe }}</p>
+                  </div>
+                {% endif %}
+                {% if blog.image_2%}
+                  <div class="text-center  justify-content-center">
+                    <img class="img-fluid" src="{{blog.image_2.url}}" loading="lazy"><br>
+                    {% if blog.caption_2 %}
+                      <i>{{blog.caption_2}}</i>
+                    {% endif %}
+                  </div>
+                {% endif %}
+                {% if blog.paragraph_3 %}
+                  <div>
+                    <br><p>{{ blog.paragraph_3 | safe}}</p>
+                  </div>
+                {% endif %}
+                {% if blog.image_3%}
+                  <div class="text-center  justify-content-center">
+                    <img class="img-fluid" src="{{blog.image_3.url}}" loading="lazy"><br>
+                    {% if blog.caption_3 %}
+                      <i>{{blog.caption_3}}</i>
+                    {% endif %}
+                  </div>
+                {% endif %}
+
+                <div>
                 <h6 class="text-info"><strong>Author</strong></h6>
-                <p>Karen Kamau</p>
-                <p class='text-info'>Founder & CEO</p>
-                <img class="rounded-circle" src= 'images/karen.png' loading="lazy" width="140", height="140">
-                <p class='text-info'> Published on Oct. 19, 2020</p>
-                <p>20 View(s)</p>
-            </div><br><br>
-        </div>
+                <p>{{ blog.author.name}}</p>
+                <p class='text-info'>{{ blog.author.title}}</p>
+                <p class='text-info'> Published on {{ blog.date}}</p>
+                <p>{{blog.views}} View(s)</p>
+                </div><br><br><hr>
+            </div>
+            <div class="col-md-12">
+                <h3 class="text-info text-center"><strong>RECENT BLOG POSTS</strong></h3><hr>
+          {% if recent_blogs %}
+          <div class="row">
+          {%for blog in recent_blogs%}
+          {% include '_partials/_blog.html' %}
+          {% endfor %}
+          </div>
+          {% else %}
+                <div class="col-md-12 text-center"><br>
+                    <p><h3>No Blog posts to display</h3></p><br>
+                </div>
+
+          {% endif %}
+                
+            </div>
+            <div class="col-md-12">
+                <h3 class="text-info text-center"><strong>POPULAR BLOG POSTS</strong></h3><hr>
+          {% if popular_blogs %}
+          <div class="row">
+          {%for blog in popular_blogs%}
+          {% include '_partials/_blog.html' %}
+          {% endfor %}
+          </div>
+          {% else %}
+                <div class="col-md-12 text-center"><br>
+                    <p><h3>No Blog posts to display</h3></p><br>
+                </div>
+
+          {% endif %}
+                
+            </div>
     </div>
+    {% endif %}
+</div>
+
 {% endblock %}
